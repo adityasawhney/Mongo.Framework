@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://schemas.microsoft.com/practices/2011/entlib/autoscaling/serviceModel"
+           xmlns:sm="http://schemas.microsoft.com/practices/2011/entlib/autoscaling/serviceModel"
+           targetNamespace="http://schemas.microsoft.com/practices/2011/entlib/autoscaling/serviceModel"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+  <xs:element name="serviceModel" type="ServiceModelType">
+    <xs:unique name="SubscriptionsUnique">
+      <xs:selector xpath="sm:subscriptions/sm:subscription"/>
+      <xs:field xpath="@subscriptionId"/>
+    </xs:unique>
+
+    <xs:key name="RolesKey">
+      <xs:selector xpath="sm:subscriptions/sm:subscription/sm:services/sm:service/sm:roles/sm:role"/>
+      <xs:field xpath="@alias"/>
+    </xs:key>
+    <xs:key name="StorageAccountsKey">
+      <xs:selector xpath="sm:subscriptions/sm:subscription/sm:storageAccounts/sm:storageAccount"/>
+      <xs:field xpath="@alias"/>
+    </xs:key>
+    <xs:key name="ScaleGroupsKey">
+      <xs:selector xpath="sm:scaleGroups/sm:scaleGroup"/>
+      <xs:field xpath="@name"/>
+    </xs:key>
+    <xs:keyref name="ScaleGroupRoleKeyRef" refer="sm:RolesKey">
+      <xs:selector xpath="sm:scaleGroups/sm:scaleGroup/sm:roles/sm:role"/>
+      <xs:field xpath="@roleAlias"/>
+    </xs:keyref>
+
+    <xs:keyref name="StabilizerRolesKey" refer="sm:RolesKey">
+      <xs:selector xpath="sm:stabilizer/sm:role"/>
+      <xs:field xpath="@roleAlias"/>
+    </xs:keyref>
+    <xs:keyref name="StabilizerGroupsKeyRef" refer="sm:ScaleGroupsKey">
+      <xs:selector xpath="sm:stabilizer/sm:group"/>
+      <xs:field xpath="@groupName"/>
+    </xs:keyref>
+  </xs:element>
+
+  <xs:complexType name="ServiceModelType">
+    <xs:all>
+      <xs:element name="stabilizer" type="StabilizerRoleType" minOccurs="0" maxOccurs="1">
+        <xs:unique name="StabilizerRoleUnique">
+          <xs:selector xpath="sm:role"/>
+          <xs:field xpath="@roleAlias"/>
+        </xs:unique>
+        <xs:unique name="StabilizerScaleGroupUnique">
+          <xs:selector xpath="sm:group"/>
+          <xs:field xpath="@groupName"/>
+        </xs:unique>
+      </xs:element>
+      <xs:element name="subscriptions" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="subscription" type="SubscriptionType" minOccurs="0" maxOccurs="unbounded">
+              <xs:unique name="ServicesUnique">
+                <xs:selector xpath="sm:services/sm:service"/>
+                <xs:field xpath="@name"/>
+                <xs:field xpath="@slot"/>
+              </xs:unique>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="scaleGroups" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="scaleGroup" type="ScaleGroupType" minOccurs="0" maxOccurs="unbounded">
+              <xs:unique name="RolesUnique">
+                <xs:selector xpath="sm:roles/sm:role"/>
+                <xs:field xpath="@roleAlias"/>
+              </xs:unique>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+
+  <xs:complexType name="SubscriptionType">
+    <xs:all>
+      <xs:element name="services" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="service" type="ServiceType" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="storageAccounts" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="storageAccount" type="StorageAccountType" minOccurs="0" maxOccurs="unbounded">
+              <xs:unique name="QueuesUnique">
+                <xs:selector xpath="sm:queues/sm:queue"/>
+                <xs:field xpath="@queueName"/>
+              </xs:unique>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+
+    <xs:attribute name="name" type="NameType" use="required"/>
+    <xs:attribute name="subscriptionId" type="GuidType" use="required"/>
+    <xs:attribute name="certificateThumbprint" type="CertificateThumbprintType" use="required"/>
+    <xs:attribute name="certificateStoreName" type="CertificateStoreNameType" use="required"/>
+    <xs:attribute name="certificateStoreLocation" type="CertificateStoreLocationType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ServiceType">
+    <xs:all>
+      <xs:element name="roles" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="role" type="RoleType" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+
+    <xs:attribute name="dnsPrefix" type="ServiceDnsPrefixType" use="required"/>
+    <xs:attribute name="slot" type="DeploymentSlotType" use="required"/>
+    <xs:attribute name="scalingMode" type="ScalingModeType" use="optional"/>
+    <xs:attribute name="notificationRecipients" type="EmailListType" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="RoleType">
+    <xs:attribute name="alias" type="NameType" use="required"/>
+    <xs:attribute name="roleName" type="NamedElementNameString" use="required"/>
+    <xs:attribute name="wadStorageAccountName" type="NameType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="StorageAccountType">
+    <xs:all>
+      <xs:element name="queues" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="queue" type="QueueType" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="alias" type="NameType" use="required"/>
+    <xs:attribute name="connectionString" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="QueueType">
+    <xs:attribute name="alias" type="NameType" use="required"/>
+    <xs:attribute name="queueName" type="NameType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ScaleGroupType">
+    <xs:all>
+      <xs:element name="roles" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="role" type="ScaleGroupRoleType" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+    <xs:attribute name="name" type="NameType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ScaleGroupRoleType">
+    <xs:attribute name="roleAlias" type="NameType" use="required"/>
+    <xs:attribute name="ratio" type="xs:positiveInteger" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="StabilizerRoleType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:choice>
+        <xs:element name="role" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="roleAlias" type="NameType" use="required"/>
+            <xs:attributeGroup ref="StabilizerSettingsAttributeGroup"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="group" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="groupName" type="NameType" use="required"/>
+            <xs:attributeGroup ref="StabilizerSettingsAttributeGroup"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attributeGroup ref="StabilizerSettingsAttributeGroup"/>
+    <xs:attribute name="notificationsCooldown" type="TimeSpanType" use="optional"/>
+  </xs:complexType>
+
+  <xs:attributeGroup name="StabilizerSettingsAttributeGroup">
+    <xs:attribute name="scaleUpCooldown" type="TimeSpanType" use="optional"/>
+    <xs:attribute name="scaleDownCooldown" type="TimeSpanType" use="optional"/>
+    <xs:attribute name="scaleUpOnlyInFirstMinutesOfHour" type="CostOptimizationMinutes" use="optional"/>
+    <xs:attribute name="scaleDownOnlyInLastMinutesOfHour" type="CostOptimizationMinutes" use="optional"/>
+  </xs:attributeGroup>
+
+  <xs:simpleType name="CostOptimizationMinutes">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="60"/>
+      <xs:pattern value="(\d*[123456789]\d+|0*)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="NameType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="GuidType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})|(\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\})"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CertificateThumbprintType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9a-fA-F]{40}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CertificateStoreNameType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AddressBook"/>
+      <xs:enumeration value="AuthRoot"/>
+      <xs:enumeration value="CertificateAuthority"/>
+      <xs:enumeration value="Disallowed"/>
+      <xs:enumeration value="My"/>
+      <xs:enumeration value="Root"/>
+      <xs:enumeration value="TrustedPeople"/>
+      <xs:enumeration value="TrustedPublisher"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CertificateStoreLocationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CurrentUser"/>
+      <xs:enumeration value="LocalMachine"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ServiceDnsPrefixType">
+    <xs:restriction base="xs:NMTOKEN"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="DeploymentSlotType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Staging"/>
+      <xs:enumeration value="Production"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ScalingModeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Scale"/>
+      <xs:enumeration value="Notify"/>
+      <xs:enumeration value="ScaleAndNotify"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="EmailListType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="TimeSpanType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([123456789]\d*\.)?([01]\d|2[0123]):([012345]\d):([012345]\d)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Copied from the service definition schema -->
+  <xs:simpleType name="NamedElementNameString">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="^[a-zA-Z_][^\\\/\:\*\?\&quot;\&lt;\&gt;\|\`\'\^]*(?&lt;![\.\s])$" />
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

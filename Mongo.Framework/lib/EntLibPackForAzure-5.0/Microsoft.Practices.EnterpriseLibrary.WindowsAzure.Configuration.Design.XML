@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design.ComponentModel.Editors.AzureStorageConnectionString">
+            <summary>
+            Represents an Azure Storage Connection String.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design.ComponentModel.Editors.AzureStorageConnectionStringDialog">
+            <summary>
+            A Microsoft Windows Azure Storage Account connection string editing window.
+            </summary>
+            <seealso cref="T:Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ComponentModel.Editors.PopupTextEditor"/>
+            <summary>
+            AzureStorageConnectionStringDialog
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design.ComponentModel.Editors.AzureStorageConnectionStringDialog.#ctor">
+            <summary>
+            Initializes a new <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design.ComponentModel.Editors.AzureStorageConnectionStringDialog"/>.
+            </summary>
+            <remarks>
+            This is the dialog displayed by the <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design.ComponentModel.Editors.AzureStorageConnectionStringEditor"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design.ComponentModel.Editors.AzureStorageConnectionStringDialog.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design.ComponentModel.Editors.AzureStorageConnectionStringEditor">
+            <summary>
+            The <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design.ComponentModel.Editors.AzureStorageConnectionStringEditor"/> provides a Azure Storage connection string 
+            value to edit in a modal window.
+            </summary>
+            <remarks>
+            This editor can be applied to a <see cref="T:System.Configuration.ConfigurationElement"/> property with the
+            <see cref="T:System.ComponentModel.EditorAttribute"/> using the <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design.ComponentModel.Editors.AzureStorageConnectionStringEditor"/>
+            for the <see cref="P:System.ComponentModel.EditorAttribute.EditorTypeName"/>.
+            </remarks>
+            <seealso cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design.ComponentModel.Editors.AzureStorageConnectionStringDialog"/>
+        </member>
+        <member name="M:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design.ComponentModel.Editors.AzureStorageConnectionStringEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <summary>
+            Allows the user to edit the specic value in a dialog by displaying <see cref="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design.ComponentModel.Editors.AzureStorageConnectionStringDialog"/> to the user.
+            </summary>
+            <returns> The new value of the object. If the value of the object has not changed, this should return the same object it was passed. </returns>
+            <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> that can be used to gain additional context information.</param>
+            <param name="provider">An <see cref="T:System.IServiceProvider"/> that this editor can use to obtain services.</param>
+            <param name="value">The object to edit.</param>
+        </member>
+        <member name="M:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design.ComponentModel.Editors.AzureStorageConnectionStringEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Gets the editor style used by <see cref="T:Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ComponentModel.Editors.PopupTextEditor"/>.
+            </summary>
+            <returns>
+            A <see cref="F:System.Drawing.Design.UITypeEditorEditStyle.Modal"/>.
+            </returns>
+            <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> that can be used to gain additional context information. </param>
+        </member>
+        <member name="T:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design.ComponentModel.Editors.TimeSpanEditorControl">
+            <summary>
+            Interaction logic for TimeSpanEditorControl.xaml
+            </summary>
+            <summary>
+            TimeSpanEditorControl
+            </summary>
+        </member>
+        <member name="M:Microsoft.Practices.EnterpriseLibrary.WindowsAzure.Configuration.Design.ComponentModel.Editors.TimeSpanEditorControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:EnterpriseLibrary.WindowsAzure.Configuration.Design.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:EnterpriseLibrary.WindowsAzure.Configuration.Design.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:EnterpriseLibrary.WindowsAzure.Configuration.Design.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:EnterpriseLibrary.WindowsAzure.Configuration.Design.Properties.Resources.AzureBlobContainerNameIsInvalid">
+            <summary>
+              Looks up a localized string similar to The blob container names must start with a letter or number, and can contain only letters, numbers, and the dash (-) character. Every dash (-) character must be immediately preceded and followed by a letter or number; consecutive dashes are not permitted. All letters in a container name must be lowercase. And the container name must be from 3 through 63 characters long..
+            </summary>
+        </member>
+        <member name="P:EnterpriseLibrary.WindowsAzure.Configuration.Design.Properties.Resources.ConvertInvalidPrimitive">
+            <summary>
+              Looks up a localized string similar to {0} is not a valid value for {1}.
+            </summary>
+        </member>
+        <member name="P:EnterpriseLibrary.WindowsAzure.Configuration.Design.Properties.Resources.EnterAccountKey">
+            <summary>
+              Looks up a localized string similar to Please enter the account key..
+            </summary>
+        </member>
+        <member name="P:EnterpriseLibrary.WindowsAzure.Configuration.Design.Properties.Resources.EnterAccountName">
+            <summary>
+              Looks up a localized string similar to Please enter an account name..
+            </summary>
+        </member>
+        <member name="P:EnterpriseLibrary.WindowsAzure.Configuration.Design.Properties.Resources.EnterSettingsName">
+            <summary>
+              Looks up a localized string similar to Please enter a settings name..
+            </summary>
+        </member>
+        <member name="P:EnterpriseLibrary.WindowsAzure.Configuration.Design.Properties.Resources.TimeSpanValueMustBeGreaterThanZero">
+            <summary>
+              Looks up a localized string similar to TimeSpan value must be greater than zero..
+            </summary>
+        </member>
+    </members>
+</doc>

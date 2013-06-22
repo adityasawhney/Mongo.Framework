@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://schemas.microsoft.com/practices/2011/entlib/autoscaling/rules"
+           xmlns:r="http://schemas.microsoft.com/practices/2011/entlib/autoscaling/rules"
+           targetNamespace="http://schemas.microsoft.com/practices/2011/entlib/autoscaling/rules"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+  <xs:element name="rules" type="RulesType"/>
+
+  <xs:complexType name="RulesType">
+    <xs:sequence>
+      <xs:element name="constraintRules" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="rule" type="ConstraintRuleType"/>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="reactiveRules" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="rule" type="ReactiveRuleType"/>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="operands" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="OperandsGroup"/>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="enabled" type="xs:boolean" default="true"/>
+  </xs:complexType>
+
+  <xs:complexType name="ConstraintRuleType">
+    <xs:all>
+      <xs:element name="timetable" type="TimetableType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="actions" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="range" type="ConstraintActionType"/>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique name="ConstraintActionTargetUnique">
+          <xs:selector xpath="r:range"/>
+          <xs:field xpath="@target"/>
+        </xs:unique>
+      </xs:element>
+    </xs:all>
+    <xs:attributeGroup ref="RuleAttributeGroup"/>
+    <xs:attribute name="rank" type="xs:positiveInteger" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="TimetableType">
+    <xs:choice minOccurs="0" maxOccurs="1">
+      <xs:element name="daily" type="DailyRecurrenceType"/>
+      <xs:element name="weekly" type="WeeklyRecurrenceType"/>
+      <xs:element name="monthly" type="MonthlyRecurrenceType"/>
+      <xs:element name="relativeMonthly" type="RelativeMonthlyRecurrenceType"/>
+      <xs:element name="yearly" type="YearlyRecurrenceType"/>
+      <xs:element name="relativeYearly" type="RelativeYearlyRecurrenceType"/>
+    </xs:choice>
+    <xs:attribute name="startTime" type="xs:time" use="required"/>
+    <xs:attribute name="duration" type="DurationType" use="required"/>
+    <xs:attribute name="startDate" type="xs:date" use="optional"/>
+    <xs:attribute name="endDate" type="xs:date" use="optional"/>
+    <xs:attribute name="utcOffset" type="UtcOffsetType" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="DailyRecurrenceType"/>
+
+  <xs:complexType name="WeeklyRecurrenceType">
+    <xs:attribute name="days" type="DaysOfWeekType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="MonthlyRecurrenceType">
+    <xs:attribute name="dayOfMonth" type="DayOfMonthType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="RelativeMonthlyRecurrenceType">
+    <xs:attribute name="dayOfWeek" type="RelativeDayOfWeekType" use="required"/>
+    <xs:attribute name="position" type="RelativeDayPositionType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="YearlyRecurrenceType">
+    <xs:attribute name="dayOfMonth" type="DayOfMonthType" use="required"/>
+    <xs:attribute name="month" type="MonthType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="RelativeYearlyRecurrenceType">
+    <xs:attribute name="dayOfWeek" type="RelativeDayOfWeekType" use="required"/>
+    <xs:attribute name="position" type="RelativeDayPositionType" use="required"/>
+    <xs:attribute name="month" type="MonthType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ConstraintActionType">
+    <xs:attribute name="target" type="xs:Name" use="required"/>
+    <xs:attribute name="min" type="xs:positiveInteger" use="required"/>
+    <xs:attribute name="max" type="xs:positiveInteger" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ReactiveRuleType">
+    <xs:all>
+      <xs:element name="when" type="ConditionType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="actions" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="scale" type="ScaleActionType"/>
+            <xs:element name="changeSetting" type="ChangeSettingActionType"/>
+            <xs:any processContents="lax" namespace="##other"/>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique name="ScaleActionTargetUnique">
+          <xs:selector xpath="r:scale"/>
+          <xs:field xpath="@target"/>
+        </xs:unique>
+      </xs:element>
+    </xs:all>
+    <xs:attributeGroup ref="RuleAttributeGroup"/>
+    <xs:attribute name="rank" type="xs:positiveInteger" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="ConditionType">
+    <xs:group ref="ExpressionGroup" minOccurs="1" maxOccurs="1"/>
+  </xs:complexType>
+
+  <xs:group name="ExpressionGroup">
+    <xs:choice>
+      <xs:element name="all">
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:group ref="ExpressionGroup"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="any">
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:group ref="ExpressionGroup"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="not">
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:group ref="ExpressionGroup"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="greater">
+        <xs:complexType>
+          <xs:attribute name="operand" type="ConditionExpression" use="required"/>
+          <xs:attribute name="than" type="ConditionExpression" use="required"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="greaterOrEqual">
+        <xs:complexType>
+          <xs:attribute name="operand" type="ConditionExpression" use="required"/>
+          <xs:attribute name="than" type="ConditionExpression" use="required"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="less">
+        <xs:complexType>
+          <xs:attribute name="operand" type="ConditionExpression" use="required"/>
+          <xs:attribute name="than" type="ConditionExpression" use="required"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="lessOrEqual">
+        <xs:complexType>
+          <xs:attribute name="operand" type="ConditionExpression" use="required"/>
+          <xs:attribute name="than" type="ConditionExpression" use="required"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="equals">
+        <xs:complexType>
+          <xs:attribute name="operand" type="ConditionExpression" use="required"/>
+          <xs:attribute name="to" type="ConditionExpression" use="required"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:group>
+
+  <xs:complexType name="ScaleActionType">
+    <xs:attribute name="target" type="xs:Name" use="required"/>
+    <xs:attribute name="by" type="ScaleByType" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ChangeSettingActionType">
+    <xs:attribute name="target" type="xs:Name" use="required"/>
+    <xs:attribute name="settingName" type="NamedElementNameString" use="required"/>
+    <xs:attribute name="value" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:group name="OperandsGroup">
+    <xs:choice>
+      <xs:element name="performanceCounter">
+        <xs:complexType>
+          <xs:attribute name="performanceCounterName" type="xs:string" use="required"/>
+          <xs:attribute name="source" type="xs:Name" use="required"/>
+          <xs:attributeGroup ref="DataPointsOperandsAttributeGroup"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="queueLength">
+        <xs:complexType>
+          <xs:attribute name="queue" type="xs:Name" use="required"/>
+          <xs:attributeGroup ref="DataPointsOperandsAttributeGroup"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="roleInstanceCount">
+        <xs:complexType>
+          <xs:attribute name="role" type="xs:Name" use="required"/>
+          <xs:attributeGroup ref="DataPointsOperandsAttributeGroup"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:any namespace="##other" processContents="lax"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:attributeGroup name="DataPointsOperandsAttributeGroup">
+    <xs:attribute name="alias" type="OperandAlias" use="required"/>
+    <xs:attribute name="timespan" type="xs:time" use="required"/>
+    <xs:attribute name="aggregate" type="AggregateType" use="required"/>
+  </xs:attributeGroup>
+
+  <xs:simpleType name="IdentifierType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="DescriptionType">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="DurationType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([123456789]\d*\.)?([01]\d|2[0123]):([012345]\d):([012345]\d)"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="UtcOffsetType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[-+]((14:00)|((0\d|1[0123]):([012345]\d)))"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="DaysOfWeekType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None"/>
+      <xs:enumeration value="Sunday"/>
+      <xs:enumeration value="Monday"/>
+      <xs:enumeration value="Sunday Monday"/>
+      <xs:enumeration value="Tuesday"/>
+      <xs:enumeration value="Sunday Tuesday"/>
+      <xs:enumeration value="Monday Tuesday"/>
+      <xs:enumeration value="Sunday Monday Tuesday"/>
+      <xs:enumeration value="Wednesday"/>
+      <xs:enumeration value="Sunday Wednesday"/>
+      <xs:enumeration value="Monday Wednesday"/>
+      <xs:enumeration value="Sunday Monday Wednesday"/>
+      <xs:enumeration value="Tuesday Wednesday"/>
+      <xs:enumeration value="Sunday Tuesday Wednesday"/>
+      <xs:enumeration value="Monday Tuesday Wednesday"/>
+      <xs:enumeration value="Sunday Monday Tuesday Wednesday"/>
+      <xs:enumeration value="Thursday"/>
+      <xs:enumeration value="Sunday Thursday"/>
+      <xs:enumeration value="Monday Thursday"/>
+      <xs:enumeration value="Sunday Monday Thursday"/>
+      <xs:enumeration value="Tuesday Thursday"/>
+      <xs:enumeration value="Sunday Tuesday Thursday"/>
+      <xs:enumeration value="Monday Tuesday Thursday"/>
+      <xs:enumeration value="Sunday Monday Tuesday Thursday"/>
+      <xs:enumeration value="Wednesday Thursday"/>
+      <xs:enumeration value="Sunday Wednesday Thursday"/>
+      <xs:enumeration value="Monday Wednesday Thursday"/>
+      <xs:enumeration value="Sunday Monday Wednesday Thursday"/>
+      <xs:enumeration value="Tuesday Wednesday Thursday"/>
+      <xs:enumeration value="Sunday Tuesday Wednesday Thursday"/>
+      <xs:enumeration value="Monday Tuesday Wednesday Thursday"/>
+      <xs:enumeration value="Sunday Monday Tuesday Wednesday Thursday"/>
+      <xs:enumeration value="Friday"/>
+      <xs:enumeration value="Sunday Friday"/>
+      <xs:enumeration value="Monday Friday"/>
+      <xs:enumeration value="Sunday Monday Friday"/>
+      <xs:enumeration value="Tuesday Friday"/>
+      <xs:enumeration value="Sunday Tuesday Friday"/>
+      <xs:enumeration value="Monday Tuesday Friday"/>
+      <xs:enumeration value="Sunday Monday Tuesday Friday"/>
+      <xs:enumeration value="Wednesday Friday"/>
+      <xs:enumeration value="Sunday Wednesday Friday"/>
+      <xs:enumeration value="Monday Wednesday Friday"/>
+      <xs:enumeration value="Sunday Monday Wednesday Friday"/>
+      <xs:enumeration value="Tuesday Wednesday Friday"/>
+      <xs:enumeration value="Sunday Tuesday Wednesday Friday"/>
+      <xs:enumeration value="Monday Tuesday Wednesday Friday"/>
+      <xs:enumeration value="Sunday Monday Tuesday Wednesday Friday"/>
+      <xs:enumeration value="Thursday Friday"/>
+      <xs:enumeration value="Sunday Thursday Friday"/>
+      <xs:enumeration value="Monday Thursday Friday"/>
+      <xs:enumeration value="Sunday Monday Thursday Friday"/>
+      <xs:enumeration value="Tuesday Thursday Friday"/>
+      <xs:enumeration value="Sunday Tuesday Thursday Friday"/>
+      <xs:enumeration value="Monday Tuesday Thursday Friday"/>
+      <xs:enumeration value="Sunday Monday Tuesday Thursday Friday"/>
+      <xs:enumeration value="Wednesday Thursday Friday"/>
+      <xs:enumeration value="Sunday Wednesday Thursday Friday"/>
+      <xs:enumeration value="Monday Wednesday Thursday Friday"/>
+      <xs:enumeration value="Sunday Monday Wednesday Thursday Friday"/>
+      <xs:enumeration value="Tuesday Wednesday Thursday Friday"/>
+      <xs:enumeration value="Sunday Tuesday Wednesday Thursday Friday"/>
+      <xs:enumeration value="Monday Tuesday Wednesday Thursday Friday"/>
+      <xs:enumeration value="Sunday Monday Tuesday Wednesday Thursday Friday"/>
+      <xs:enumeration value="Saturday"/>
+      <xs:enumeration value="Sunday Saturday"/>
+      <xs:enumeration value="Monday Saturday"/>
+      <xs:enumeration value="Sunday Monday Saturday"/>
+      <xs:enumeration value="Tuesday Saturday"/>
+      <xs:enumeration value="Sunday Tuesday Saturday"/>
+      <xs:enumeration value="Monday Tuesday Saturday"/>
+      <xs:enumeration value="Sunday Monday Tuesday Saturday"/>
+      <xs:enumeration value="Wednesday Saturday"/>
+      <xs:enumeration value="Sunday Wednesday Saturday"/>
+      <xs:enumeration value="Monday Wednesday Saturday"/>
+      <xs:enumeration value="Sunday Monday Wednesday Saturday"/>
+      <xs:enumeration value="Tuesday Wednesday Saturday"/>
+      <xs:enumeration value="Sunday Tuesday Wednesday Saturday"/>
+      <xs:enumeration value="Monday Tuesday Wednesday Saturday"/>
+      <xs:enumeration value="Sunday Monday Tuesday Wednesday Saturday"/>
+      <xs:enumeration value="Thursday Saturday"/>
+      <xs:enumeration value="Sunday Thursday Saturday"/>
+      <xs:enumeration value="Monday Thursday Saturday"/>
+      <xs:enumeration value="Sunday Monday Thursday Saturday"/>
+      <xs:enumeration value="Tuesday Thursday Saturday"/>
+      <xs:enumeration value="Sunday Tuesday Thursday Saturday"/>
+      <xs:enumeration value="Monday Tuesday Thursday Saturday"/>
+      <xs:enumeration value="Sunday Monday Tuesday Thursday Saturday"/>
+      <xs:enumeration value="Wednesday Thursday Saturday"/>
+      <xs:enumeration value="Sunday Wednesday Thursday Saturday"/>
+      <xs:enumeration value="Monday Wednesday Thursday Saturday"/>
+      <xs:enumeration value="Sunday Monday Wednesday Thursday Saturday"/>
+      <xs:enumeration value="Tuesday Wednesday Thursday Saturday"/>
+      <xs:enumeration value="Sunday Tuesday Wednesday Thursday Saturday"/>
+      <xs:enumeration value="Monday Tuesday Wednesday Thursday Saturday"/>
+      <xs:enumeration value="Sunday Monday Tuesday Wednesday Thursday Saturday"/>
+      <xs:enumeration value="Friday Saturday"/>
+      <xs:enumeration value="Sunday Friday Saturday"/>
+      <xs:enumeration value="Monday Friday Saturday"/>
+      <xs:enumeration value="Sunday Monday Friday Saturday"/>
+      <xs:enumeration value="Tuesday Friday Saturday"/>
+      <xs:enumeration value="Sunday Tuesday Friday Saturday"/>
+      <xs:enumeration value="Monday Tuesday Friday Saturday"/>
+      <xs:enumeration value="Sunday Monday Tuesday Friday Saturday"/>
+      <xs:enumeration value="Wednesday Friday Saturday"/>
+      <xs:enumeration value="Sunday Wednesday Friday Saturday"/>
+      <xs:enumeration value="Monday Wednesday Friday Saturday"/>
+      <xs:enumeration value="Sunday Monday Wednesday Friday Saturday"/>
+      <xs:enumeration value="Tuesday Wednesday Friday Saturday"/>
+      <xs:enumeration value="Sunday Tuesday Wednesday Friday Saturday"/>
+      <xs:enumeration value="Monday Tuesday Wednesday Friday Saturday"/>
+      <xs:enumeration value="Sunday Monday Tuesday Wednesday Friday Saturday"/>
+      <xs:enumeration value="Thursday Friday Saturday"/>
+      <xs:enumeration value="Sunday Thursday Friday Saturday"/>
+      <xs:enumeration value="Monday Thursday Friday Saturday"/>
+      <xs:enumeration value="Sunday Monday Thursday Friday Saturday"/>
+      <xs:enumeration value="Tuesday Thursday Friday Saturday"/>
+      <xs:enumeration value="Sunday Tuesday Thursday Friday Saturday"/>
+      <xs:enumeration value="Monday Tuesday Thursday Friday Saturday"/>
+      <xs:enumeration value="Sunday Monday Tuesday Thursday Friday Saturday"/>
+      <xs:enumeration value="Wednesday Thursday Friday Saturday"/>
+      <xs:enumeration value="Sunday Wednesday Thursday Friday Saturday"/>
+      <xs:enumeration value="Monday Wednesday Thursday Friday Saturday"/>
+      <xs:enumeration value="Sunday Monday Wednesday Thursday Friday Saturday"/>
+      <xs:enumeration value="Tuesday Wednesday Thursday Friday Saturday"/>
+      <xs:enumeration value="Sunday Tuesday Wednesday Thursday Friday Saturday"/>
+      <xs:enumeration value="Monday Tuesday Wednesday Thursday Friday Saturday"/>
+      <xs:enumeration value="All"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="DayOfMonthType">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:maxInclusive value="31"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="MonthType">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:maxInclusive value="12"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="RelativeDayOfWeekType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Sunday"/>
+      <xs:enumeration value="Monday"/>
+      <xs:enumeration value="Tuesday"/>
+      <xs:enumeration value="Wednesday"/>
+      <xs:enumeration value="Thursday"/>
+      <xs:enumeration value="Friday"/>
+      <xs:enumeration value="Saturday"/>
+      <xs:enumeration value="Day"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="RelativeDayPositionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="First"/>
+      <xs:enumeration value="Second"/>
+      <xs:enumeration value="Third"/>
+      <xs:enumeration value="Fourth"/>
+      <xs:enumeration value="Last"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="AggregateType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Average"/>
+      <xs:enumeration value="Max"/>
+      <xs:enumeration value="Min"/>
+      <xs:enumeration value="Growth"/>
+      <xs:enumeration value="Last"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:attributeGroup name="RuleAttributeGroup">
+    <xs:attribute name="name" type="IdentifierType" use="required"/>
+    <xs:attribute name="description" type="DescriptionType" use="optional"/>
+    <xs:attribute name="enabled" type="xs:boolean" default="true"/>
+  </xs:attributeGroup>
+
+  <xs:simpleType name="ScaleByType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="^[-+]?[0-9]+%?$" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="OperandAlias">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern value="\p{L}[0-9\p{L}_]*" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ConditionExpression">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern value="[0-9\p{L}_ \*\/]+" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Copied from the service definition schema -->
+  <xs:simpleType name="NamedElementNameString">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="^[a-zA-Z_][^\\\/\:\*\?\&quot;\&lt;\&gt;\|\`\'\^]*(?&lt;![\.\s])$" />
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
