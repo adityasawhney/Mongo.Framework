@@ -60,7 +60,7 @@ namespace Mongo.Framework.DataAccess
 
 				result = this.retryPolicy.ExecuteAction(() => command.Execute<TResult>());
 			}
-			catch (System.Exception ex)
+			catch (System.Exception)
 			{
 				if (retryCount == MAX_ATTEMPTS)
 				{
