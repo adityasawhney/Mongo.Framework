@@ -38,6 +38,10 @@
     <Reference Include="MongoDB.Bson">
       <HintPath>..\Mongo.Framework\lib\CSharpDriver-1.8.1\MongoDB.Bson.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Driver, Version=1.8.1.20, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Mongo.Framework\lib\CSharpDriver-1.8.1\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -53,9 +57,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Command\ComputeTagsCommand.cs" />
     <Compile Include="Command\CreatePostCommand.cs" />
     <Compile Include="Command\DeleteAllPostCommand.cs" />
     <Compile Include="Command\FindPostWithCommentsByCommand.cs" />
+    <Compile Include="Command\GetPostsCommand.cs" />
     <Compile Include="DataAccess\IPostDataAccess.cs" />
     <Compile Include="DataAccess\PostDataAccess.cs" />
     <Compile Include="Model\Post.cs" />

@@ -6,7 +6,11 @@ namespace Mongo.Framework.Example.DataAccess
 	{
 		void CreatePost(Post post);
 
+		Post[] GetPosts();
+
 		string[] FindPostWithCommentsBy(string commenter);
+
+		void ComputeTags(string[] postTitles);
 
 		void DeleteAllPost();
 	}

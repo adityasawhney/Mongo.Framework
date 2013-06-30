@@ -36,6 +36,7 @@ namespace Mongo.Framework.Example
 			{
 				Title = title,
 				Body = "This isn't a very long post.",
+				Tags = new List<string>(),
 				Comments = new List<Comment>
 				{
 					{ new Comment() { TimePosted = new DateTime(2013,1,1), 
@@ -51,6 +52,7 @@ namespace Mongo.Framework.Example
 			{
 				Title = "My Second Post",
 				Body = "This isn't a very long post either.",
+				Tags = new List<string>(),
 				Comments = new List<Comment>
 				{
 					{ new Comment() { TimePosted = new DateTime(2013,1,3), 
@@ -69,6 +71,17 @@ namespace Mongo.Framework.Example
 			// Verify the acceptance criteria
 			Assert.AreEqual(1, posts.Count());
 			Assert.AreEqual(title, posts.First());
+
+			// Compute tags for posts
+			postDataAccess.ComputeTags(new [] { post1.Title });
+
+			// Get the post
+			var postsWithTag = postDataAccess.GetPosts();
+
+			// Verify the acceptance criteria
+			Assert.AreEqual(2, postsWithTag.Count());
+			Assert.IsTrue(postsWithTag.First(p => p.Title == post1.Title).Tags.Count > 0);
+			Assert.IsTrue(postsWithTag.First(p => p.Title == post2.Title).Tags.Count == 0);
 		}
 	}
 }
