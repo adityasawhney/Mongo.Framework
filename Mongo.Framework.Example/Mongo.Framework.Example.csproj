@@ -43,6 +43,9 @@
       <HintPath>..\Mongo.Framework\lib\CSharpDriver-1.8.1\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="TestApiCore">
+      <HintPath>..\Mongo.FaultInjection\lib\TestApi-0.6\TestApiCore.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -65,13 +68,20 @@
     <Compile Include="DataAccess\IPostDataAccess.cs" />
     <Compile Include="DataAccess\PostDataAccess.cs" />
     <Compile Include="Model\Post.cs" />
-    <Compile Include="PostTests.cs" />
+    <Compile Include="Test\PostFaultInjectionTests.cs" />
+    <Compile Include="Test\PostFaultTestBase.cs" />
+    <Compile Include="Test\PostTestBase.cs" />
+    <Compile Include="Test\PostTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Mongo.FaultInjection\Mongo.FaultInjection.csproj">
+      <Project>{1fdb9f8b-e1ae-48d3-8682-8bfc9ce5bb98}</Project>
+      <Name>Mongo.FaultInjection</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mongo.Framework\Mongo.Framework.csproj">
       <Project>{33F4366B-5F89-43B1-94C6-3CA3D504B36D}</Project>
       <Name>Mongo.Framework</Name>

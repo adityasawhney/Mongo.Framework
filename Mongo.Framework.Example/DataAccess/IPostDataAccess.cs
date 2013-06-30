@@ -2,7 +2,7 @@
 
 namespace Mongo.Framework.Example.DataAccess
 {
-	interface IPostDataAccess
+	public interface IPostDataAccess
 	{
 		void CreatePost(Post post);
 

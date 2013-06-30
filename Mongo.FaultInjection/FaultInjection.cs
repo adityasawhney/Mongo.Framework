@@ -89,12 +89,7 @@ namespace Mongo.FaultInjection
 		private IFaultInjectionTestScenario fiScenario;
 	    private IFaultInjectionTest fiTest;
 
-		public FaultInjection(Type scenarioType) // When used as test attribute
-		{
-		    this.fiScenario = BaseFaultInjectionTestScenario.Create(scenarioType);
-		}
-
-        public FaultInjection(IFaultInjectionTestScenario scenario, IFaultInjectionTest test) // When creating with "using"
+        public FaultInjection(IFaultInjectionTestScenario scenario, IFaultInjectionTest test)
         {
             Init(scenario, test);
         }

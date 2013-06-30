@@ -1,32 +1,14 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Mongo.Framework.Example.DataAccess;
 using Mongo.Framework.Example.Model;
 
-namespace Mongo.Framework.Example
+namespace Mongo.Framework.Example.Test
 {
 	[TestClass]
-	public class PostTests
+	public class PostTests : PostTestBase
 	{
-		private IPostDataAccess postDataAccess;
-
-		[TestInitialize]
-		public void Setup()
-		{
-			// Instantiate the data access for posts
-			var connectionInfo = ConnectionInfo.FromAppConfig("PostsDB");
-			postDataAccess = new PostDataAccess(connectionInfo);
-		}
-
-		[TestCleanup]
-		public void Teardown()
-		{
-			// Make the test repeatable by deleting all the posts
-			postDataAccess.DeleteAllPost();
-		}
-
 		[TestMethod]
 		public void TestPostFunctionality()
 		{
@@ -62,21 +44,21 @@ namespace Mongo.Framework.Example
 			};
 
 			// Insert the posts into the DB
-			postDataAccess.CreatePost(post1);
-			postDataAccess.CreatePost(post2);
+			PostAccess.CreatePost(post1);
+			PostAccess.CreatePost(post2);
 
 			// Get a post
-			var posts = postDataAccess.FindPostWithCommentsBy("sara");
+			var posts = PostAccess.FindPostWithCommentsBy("sara");
 
 			// Verify the acceptance criteria
 			Assert.AreEqual(1, posts.Count());
 			Assert.AreEqual(title, posts.First());
 
 			// Compute tags for posts
-			postDataAccess.ComputeTags(new [] { post1.Title });
+			PostAccess.ComputeTags(new[] { post1.Title });
 
 			// Get the post
-			var postsWithTag = postDataAccess.GetPosts();
+			var postsWithTag = PostAccess.GetPosts();
 
 			// Verify the acceptance criteria
 			Assert.AreEqual(2, postsWithTag.Count());
