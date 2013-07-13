@@ -12,9 +12,9 @@ The framework provides following capabilities:
 - Constructs to enable ACID semantics using Compare And Swap(CAS) approach
 - Constructs to generate various hashes (MD5, Murmur2)
 - Constructs to generate identifiers similar to Identity column in SQL
-- Fault injection framework to test ACID sematics of commands
+- Fault injection framework to test ACID semantics of commands
 
 For complete description of the design of the framework refer to following wiki:
-
+http://lotusinmud.wordpress.com/2013/07/13/mongo-client-framework-for-net/
 
 For illustration on how to use the framework refer to the **Mongo.Framework.Example** project.
