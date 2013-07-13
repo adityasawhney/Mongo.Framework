@@ -6,6 +6,7 @@ Mongo framework for .Net which builds on top the 10gen's official Mongo C# drive
 The framework provides following capabilities:
 - Constructs for Data Access Layer (DAL) abstraction
 - Repository pattern abstraction to interface with Mongo driver
+- Standardized pattern to define Object Model, its ORM and versioning scheme
 - Transient fault handling and configurable retry logic using the Enterprise Library
 - Command pattern to provide stored procedure like semantics
 - Constructs to enable ACID semantics using Compare And Swap(CAS) approach
@@ -16,4 +17,4 @@ The framework provides following capabilities:
 For complete description of the design of the framework refer to following wiki:
 
 
-For illustration on how to use the framework refer to the Mongo.Framework.Example project.
+For illustration on how to use the framework refer to the **Mongo.Framework.Example** project.
