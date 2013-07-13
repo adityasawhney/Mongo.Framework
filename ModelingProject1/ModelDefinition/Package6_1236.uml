@@ -1,0 +1,1028 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="9d52f667-b982-4c27-a178-f730c094d6fc"
+  name="TransientFault"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="764b93e4-f70d-4755-b7bf-78b1f7f3c6af"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DMongo.Framework.TransientFault"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <Interface
+        Id="46b8f5dc-9497-4960-96c5-f2e5b130d29b"
+        name="IMongoErrorHandlingFactory"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="12421e3c-9e9c-403d-8c55-82cb44c0c743"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DIMongoErrorHandlingFactory"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="dfb6f414-b308-45ef-a1cf-d38d534966d8"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="29fb22da-a93e-479f-a6c1-e9368955c2df">
+                <propertyInstance
+                  Id="5ff36793-b521-4d79-b087-22ef4c60e7be"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5b799448-1cba-4c68-9b71-9028bc94b3e8">
+                <propertyInstance
+                  Id="346fec73-3885-43d1-99cd-f619ffd55362"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f7382e48-73c1-48bc-a35b-092a565ab627">
+                <propertyInstance
+                  Id="451319e5-d022-4a4d-a65d-1cf0d98fa88b"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="eb7afa58-a6a2-433a-a4d0-93a77508acde">
+                <propertyInstance
+                  Id="aaec6be6-27ed-4153-85c8-52e627785f23"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <suppliersInternal>
+          <dependency
+            Id="d2414868-15e6-4cc8-a5be-6d5ec13d81f9">
+            <interfaceMoniker
+              Id="f766bbe1-4157-4d1b-9711-fceff412d602"
+              LastKnownName="ITransientErrorDetectionStrategy"
+              LastKnownLocation="Package5_1236.uml" />
+          </dependency>
+        </suppliersInternal>
+        <ownedOperations>
+          <operation
+            Id="904b83ee-690e-4886-b379-e30e7daddb69"
+            name="CreateErrorDetectionStrategy"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="8ac2e267-7a66-464a-9781-8733ba541326"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DIMongoErrorHandlingFactory Member%3DCreateErrorDetectionStrategy"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="602ff4e7-4697-4032-a1ad-21489644a79b"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0ac87bcc-b816-40d4-94b5-fc9bac8f9be9">
+                    <propertyInstance
+                      Id="4d77ae43-e5f0-40ac-9976-073105dd03e6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9f48b6f3-0e3f-40b7-aaad-f695607c1c8c">
+                    <propertyInstance
+                      Id="5bf6ad4a-29a4-4db5-988a-538235e60daa"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f2c1d749-b004-48cf-9204-cd6b830a6296">
+                    <propertyInstance
+                      Id="edb68f81-4b07-4ce1-bdc5-ac76f4f6f539"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a2969215-604e-4923-859f-92a05d139f66">
+                    <propertyInstance
+                      Id="819f51e9-8de0-43ca-bf5a-b344b25a4117"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="00a28d95-7887-4154-805c-ea6bf70a4e48">
+                    <propertyInstance
+                      Id="0c65241f-e6b2-475e-8754-7af85bf3b364"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7cb05894-dbd3-4615-95f5-2cde4bd8b17a">
+                    <propertyInstance
+                      Id="ffa78df9-c000-436b-82a3-6d3733af7b12"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4c539986-2601-4835-84f3-58fdc84a6ba2"
+                  direction="Return">
+                  <type_NamedElement>
+                    <interfaceMoniker
+                      Id="f766bbe1-4157-4d1b-9711-fceff412d602"
+                      LastKnownName="ITransientErrorDetectionStrategy"
+                      LastKnownLocation="Package5_1236.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="fcd507d0-cddb-4e93-b0c0-7353625f2685"
+        name="MongoTransientErrorDetectionStrategy"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="228f0b66-8716-44b4-b2a8-4a17ffb867b9"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DMongoTransientErrorDetectionStrategy"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="9033b403-bcea-4ed4-a4b3-715591764f5c"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="57447546-411a-44ad-91e1-5003920bbd5d">
+                <propertyInstance
+                  Id="8eb8507a-baac-419d-ac95-9694ec66946d"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="8e4f951f-3942-42e6-ae8c-743de71c7b99">
+                <propertyInstance
+                  Id="c4ead84c-632d-4eab-8151-4439ee510c1a"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a8e44ae8-edee-4267-8f96-e9977919b774">
+                <propertyInstance
+                  Id="b63c2284-5c17-470f-93bd-63954dc97152"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="85199e6c-d4f6-401f-98f2-d76de1fd8bf0">
+                <propertyInstance
+                  Id="4b51daa0-cddc-467a-b429-e4d86441f827"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="8daafc99-ec01-425f-bdc0-68a194150826">
+                <propertyInstance
+                  Id="e29a3ca8-0dd8-432d-a776-c6486526919e"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <suppliersInternal>
+          <interfaceRealization
+            Id="f4200638-07df-4e15-993a-cad56a4ef4c1">
+            <interfaceMoniker
+              Id="f766bbe1-4157-4d1b-9711-fceff412d602"
+              LastKnownName="ITransientErrorDetectionStrategy"
+              LastKnownLocation="Package5_1236.uml" />
+          </interfaceRealization>
+          <interfaceRealization
+            Id="a66489e8-3807-408a-afe9-cce785ad1db6">
+            <interfaceMoniker
+              Id="76181d98-3cf0-404f-94a3-17ddf9f68855"
+              LastKnownName="ITransientErrorDetectionStrategy"
+              LastKnownLocation="Package_1420.uml" />
+          </interfaceRealization>
+          <dependency
+            Id="61873130-4b92-4d86-be68-27bca4a2d1c4"
+            name="&lt;use&gt;">
+            <classMoniker
+              Id="a8fe20f4-5d76-474c-80f8-25c53fe72150"
+              LastKnownName="MongoExceptionExtensions"
+              LastKnownLocation="Package_1420.uml" />
+          </dependency>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="41c83683-0684-4fe7-afcb-3e4bfde9ae49"
+            name="TRANSIENT_MONGO_ERRORS"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isOrdered="true"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="7793d33f-fef1-4b93-9c5f-b29970b12698"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DMongoTransientErrorDetectionStrategy Member%3DTRANSIENT_MONGO_ERRORS"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="cbc57424-89fd-4b4f-a125-02907c3193b2"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a9510468-421a-4841-b77a-58d3cb7879c2">
+                    <propertyInstance
+                      Id="188bdace-fea9-4822-a4fd-b3e97b68314f"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a6012008-d265-4783-8b7a-a3c0c9f6c955">
+                    <propertyInstance
+                      Id="1cd36c5d-2221-4031-a8f6-679fbf3bc82b"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1733ba76-105b-4dac-b866-350b1d3ebbd8">
+                    <propertyInstance
+                      Id="e7ff03eb-3393-47d9-8a20-1b52e772c8c2"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d1c36530-d2d0-4265-b60f-a17b54e74161">
+                    <propertyInstance
+                      Id="edf2e912-f287-40b6-9e36-9d943a345844"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b583a29a-98fb-4ddf-a706-c7689c2e24ed">
+                    <propertyInstance
+                      Id="43ee6595-6ae3-4731-b4ca-a24baca07736"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <lowerValueInternal>
+              <literalString
+                Id="b46afcca-a587-4f95-a7fa-b0b80cc1ff29"
+                name="Lower"
+                value="*" />
+            </lowerValueInternal>
+            <upperValueInternal>
+              <literalString
+                Id="9d8e1b5d-8430-4c52-8bc0-d04b8c81d4a8"
+                name="Upper"
+                value="*" />
+            </upperValueInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="2383b058-b8b0-439f-9f92-404d7aa857d7"
+                LastKnownName="MongoError"
+                LastKnownLocation="Package6_1236.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="dafd4db3-bfa6-4da3-bbf0-99ba12dd5595"
+            name="CheckIsTransient"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="6953489a-5058-4691-b176-9fba10976e4a"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DMongoTransientErrorDetectionStrategy Member%3D(Name%3DCheckIsTransient OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DException)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="e0a0237a-1d1c-4f6b-9c40-a0eab5de51d6"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="57d59918-540c-4310-bc4b-62a2f86d074b">
+                    <propertyInstance
+                      Id="de502b27-5a21-4028-8d76-ba8ca26b4ad1"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7a3315b1-3523-4bb8-9cad-ba14bdcc4241">
+                    <propertyInstance
+                      Id="4cbb95d9-60a2-46ad-80b2-74efe4cb1230"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1e4be8c0-c8cf-4972-8479-c64f6359f650">
+                    <propertyInstance
+                      Id="a7469a4f-0940-479a-9574-80c933238ef5"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cb988a4e-51a7-4653-92ed-bba23f05c6e8">
+                    <propertyInstance
+                      Id="af2d954f-30cb-42f4-8f9e-4b9e7e9d5c35"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cf562387-c249-4bde-9c5c-c0f7ebce3af1">
+                    <propertyInstance
+                      Id="074fff30-e4bd-4a76-8b63-89c96aa0124c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="02ed24a0-c456-4db6-920b-385145ebc4bd">
+                    <propertyInstance
+                      Id="52e9dc10-7448-40cd-9673-5551dd62f5ff"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3bd6bd98-5e2a-4887-8d0c-6bdc01c8b31b"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="443a9992-2e1e-456e-8eaf-0a0c138de0f7"
+                  name="exception"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="1a949390-bc8e-40a2-af69-c47486038e0c"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DMongoTransientErrorDetectionStrategy Member%3D(Name%3DCheckIsTransient OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DException)]) ParameterIdentifier%3Dexception"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="05a7b040-92fc-4e68-b6bf-8bfaaaf630da"
+                      LastKnownName="Exception"
+                      LastKnownLocation="Package8_1236.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0d1b48f4-a433-4101-831d-9549bc850770"
+            name="IsTransient"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="a1a1dd04-34a4-42c4-b4dd-e708e8673f53"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DMongoTransientErrorDetectionStrategy Member%3D(Name%3DIsTransient OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DException)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3e439a0f-91f3-433d-98b1-0dd6f409a889"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a54032ea-56c0-4469-baba-867a18dd1353">
+                    <propertyInstance
+                      Id="a4b0497d-ba74-4bdf-8132-3464cf73723f"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b72d1f0f-4721-4655-a3d0-614539c50f94">
+                    <propertyInstance
+                      Id="f6e943b2-df40-447e-93e7-dab4f1a13e47"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d277b674-4d26-4491-b04b-19b5a949fda0">
+                    <propertyInstance
+                      Id="a8af669d-a0ad-4889-ba1e-ebb930c87cf7"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e92488b2-68e3-454c-8172-528f36f5cca0">
+                    <propertyInstance
+                      Id="818a995a-03e0-49f4-9d71-e20fcf377065"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dd380e9a-4846-4d49-8875-3504e935623f">
+                    <propertyInstance
+                      Id="7bdd51d4-c158-4953-ae49-2660667c9f83"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b6fef5ba-1307-4df6-95f9-95a0a3003371">
+                    <propertyInstance
+                      Id="dc4282da-9e91-4580-91cd-34049edfe1dc"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d9cc50b0-c01d-4e9a-8c75-e070e728dc87"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d795c697-0c66-4b9d-a8b3-9f6c2a88b06f"
+                  name="ex"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="61f16c1b-3f12-46d6-b28a-07d43470b908"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DMongoTransientErrorDetectionStrategy Member%3D(Name%3DIsTransient OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DException)]) ParameterIdentifier%3Dex"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="05a7b040-92fc-4e68-b6bf-8bfaaaf630da"
+                      LastKnownName="Exception"
+                      LastKnownLocation="Package8_1236.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="53912085-ac9f-4114-ba0e-687d8ec61d73"
+            name="IsTransientMongoError"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="588b6337-d90c-4824-8cbf-3b82dead5275"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DMongoTransientErrorDetectionStrategy Member%3D(Name%3DIsTransientMongoError OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DMongoError)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="4df119ff-5caf-4c32-bcf8-b867d2c114fb"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="641c1f4c-b09e-4b6b-a075-94c5f6d6bff6">
+                    <propertyInstance
+                      Id="75497db1-7398-444a-bbe9-530d8e886693"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8f76a430-652f-48c3-a5eb-03953e97242f">
+                    <propertyInstance
+                      Id="797ac960-e271-4104-ba30-4e94aaef997b"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0b33f6a7-0a93-4246-9239-1f38a1356904">
+                    <propertyInstance
+                      Id="18c71a0e-f4f2-4674-b3f3-644f14f4371f"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="001b0052-eb4b-43da-b681-2937acfb8aaa">
+                    <propertyInstance
+                      Id="82fb3108-7270-41d3-af1a-8691f98c76ca"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3adc9cbc-b72e-4157-afaf-d0c1bd650c5a">
+                    <propertyInstance
+                      Id="edf4a5c5-86ef-4379-8fae-3e611c13216c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="40ea0eb2-1dd2-4145-8eeb-9b80744ced8c">
+                    <propertyInstance
+                      Id="37c577ad-5215-43ad-a90c-24959103f58a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="06a13085-25e5-447d-aa8d-d76c757dc69c"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="799cc841-3408-499c-9c6c-bed722b09c1e"
+                  name="error"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="cfcfba3c-21eb-4a28-88d1-7c52b651b631"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DMongoTransientErrorDetectionStrategy Member%3D(Name%3DIsTransientMongoError OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DMongoError)]) ParameterIdentifier%3Derror"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <enumerationMoniker
+                      Id="de081608-5d87-4e58-bac6-d5b9f7c37a95"
+                      LastKnownName="MongoError"
+                      LastKnownLocation="Package6_1236.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="11988cd7-d93a-431a-8b22-294cb61cb0b7"
+            name="MongoTransientErrorDetectionStrategy"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="95562f1c-21c0-4059-a0a0-edbd25372e27"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DMongoTransientErrorDetectionStrategy Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="7d78fcb5-d861-4c7b-b4bd-b09b2e4fa787"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5f5da20f-9eab-4a42-a04d-e30e7f3efced">
+                    <propertyInstance
+                      Id="d66f7105-5aaf-4ab8-a356-b0fff5f84788"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a1e3ed1e-5e40-43d1-a296-de7665ba1b5f">
+                    <propertyInstance
+                      Id="c95d716d-d82e-4462-a4d2-be0663e117d5"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a4347f10-0430-4cec-9306-35e3e7456fa9">
+                    <propertyInstance
+                      Id="8ae0f2e0-a66c-439f-87dd-fae045c6c8f7"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="de822ede-d1e1-48f7-b353-b54f2ee7ca36">
+                    <propertyInstance
+                      Id="2fc03156-fc49-484d-9e3b-808ea78cbd5a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="aae5524e-61e3-41a4-828e-842c84c70710">
+                    <propertyInstance
+                      Id="db640f38-2f6b-4bce-bde0-3f7a3ad75e8e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8e6e1f28-a00e-400d-9899-2ff6821a5655">
+                    <propertyInstance
+                      Id="d611d70d-29f9-445b-ba52-187266ae946b"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="561d0e7a-5c03-47fc-a313-cfbb061b0ab1"
+            name="CreateErrorDetectionStrategy"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0c3611d0-f054-4251-bc9c-a35651a8e565"
+                  direction="Return">
+                  <type_NamedElement>
+                    <interfaceMoniker
+                      Id="f766bbe1-4157-4d1b-9711-fceff412d602"
+                      LastKnownName="ITransientErrorDetectionStrategy"
+                      LastKnownLocation="Package5_1236.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="de081608-5d87-4e58-bac6-d5b9f7c37a95"
+        name="MongoError"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="0a2bf45f-a291-445b-8cdd-ae8618b5fa34"
+            handle="viewcode://./CodeSchema_Enum?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DMongoError"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="ff6648e7-d89c-4276-bf4a-3fad6f54b6f3"
+            name="enum"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f1e8bf71-59e5-4c34-9921-05b777cf20b4">
+                <propertyInstance
+                  Id="194ae6b1-b458-4750-a89c-3e1137c055d7"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="8237b295-0d1e-4805-99ca-ccaf7b54a2f9">
+                <propertyInstance
+                  Id="fcd9bf96-e939-41d7-be18-d4117998d8d4"
+                  name="BaseType"
+                  value="int" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="2f7a20a0-850d-4342-9e43-8d3ece7d88e1">
+                <propertyInstance
+                  Id="75792cee-32b0-431c-acc8-1ef5d0a53a71"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="2383b058-b8b0-439f-9f92-404d7aa857d7"
+        name="MongoError"
+        visibility="Private"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="23645580-b2e1-4c63-a1bc-b205f5223454"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3D(Name%3DMongoError ArrayRank%3D1 ParentType%3DMongoError)"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="df6ce95b-6439-4fa5-9a48-dbeaf5f7d2f2"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a9ddbb75-9e08-411e-a968-fd78fcd689d2">
+                <propertyInstance
+                  Id="ca261f77-6388-4df7-bbf3-32836c984831"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="def921e1-14f9-46ed-99f8-72855a5a0b1b">
+                <propertyInstance
+                  Id="8ca70b06-130d-4106-af45-1b4ab8138160"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7c8565c0-984c-414d-9702-67d2b1c8e813">
+                <propertyInstance
+                  Id="19bd40b6-4628-422a-8102-58578b0dc325"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b3adb414-46ff-473f-b99e-374849a513a1">
+                <propertyInstance
+                  Id="5fe69486-46f5-42e4-9175-d032182876f8"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="333b9b66-f775-4fa6-bb97-908cb8a61d72">
+                <propertyInstance
+                  Id="29ac346b-13c9-4d15-a1e6-aaa24279b892"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="79cadb85-e25d-48a9-a0d6-0df5784f9623"
+        name="DefaultMongoErrorHandlingFactory"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="e786a557-1ae9-4003-8d6e-18b755d1bb99"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DDefaultMongoErrorHandlingFactory"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="3d2e3f31-af79-40fe-b742-7c59c5e7f4b7"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="eb8e3a7b-f291-4e45-b8dd-a3df633e2f1b">
+                <propertyInstance
+                  Id="ef13651a-49d4-43c6-b4a7-e6f7c9fc5e49"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="8a50f172-fb6b-47ba-9a4d-54dfa4c347c2">
+                <propertyInstance
+                  Id="acf2aadc-c7bc-4a5a-a5cf-2b7554986de7"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c7a70b0e-cee5-49ae-9d30-e6e310cc914e">
+                <propertyInstance
+                  Id="e320ca5d-b8e3-42e9-a054-7de72e71c086"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7a9cc75b-cf76-45db-9992-22cfd0267048">
+                <propertyInstance
+                  Id="40f8c107-cbd0-4521-9701-6f44a9136b0f"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="748a28e1-1bee-436c-8bd3-c2020cc90f5d">
+                <propertyInstance
+                  Id="0f19d9d7-a284-41ce-8140-8e437c24f65a"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <suppliersInternal>
+          <interfaceRealization
+            Id="a8e25d75-d3a1-4b5e-8c54-6d5899efaebb">
+            <interfaceMoniker
+              Id="46b8f5dc-9497-4960-96c5-f2e5b130d29b"
+              LastKnownName="IMongoErrorHandlingFactory"
+              LastKnownLocation="Package6_1236.uml" />
+          </interfaceRealization>
+          <dependency
+            Id="96286f79-9ece-4baa-8481-87158a0af811"
+            name="&lt;create&gt;">
+            <classMoniker
+              Id="fcd507d0-cddb-4e93-b0c0-7353625f2685"
+              LastKnownName="MongoTransientErrorDetectionStrategy"
+              LastKnownLocation="Package6_1236.uml" />
+          </dependency>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="c696359d-57b3-414b-8302-59160416a374"
+            name="CreateErrorDetectionStrategy"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="5adfbb2b-8ca2-4be6-80ef-5657024c9d78"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DDefaultMongoErrorHandlingFactory Member%3DCreateErrorDetectionStrategy"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="299ad93b-7f85-4d5a-a505-4ded6182294b"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f0d1b98b-5571-4760-b210-92978e69d025">
+                    <propertyInstance
+                      Id="28df1deb-1e2c-4088-b0f1-ce6fd10d8960"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="39b8b905-01b1-47c9-b617-1c3375919584">
+                    <propertyInstance
+                      Id="6edb99cf-4fac-425f-89bf-803915328136"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6446dca6-2a76-4199-913d-759c84da784a">
+                    <propertyInstance
+                      Id="07f35836-14f1-4b0a-96e4-1c769d10e13a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dc761cd5-f6dc-4c66-99df-8cdb5080dbca">
+                    <propertyInstance
+                      Id="a68e7c53-e716-42bc-b757-dd940f782a40"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8b8f31a6-79d8-4979-a665-1bb3d488a599">
+                    <propertyInstance
+                      Id="cd57004a-1e22-41fa-bb67-0017336cebd3"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9d4f9089-fd20-412c-b50a-dc8c38f96993">
+                    <propertyInstance
+                      Id="42e6a76d-04fb-4299-8a13-978ea03cfe7f"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="85843f23-cee2-4736-93da-d17cc71c1110"
+                  direction="Return">
+                  <type_NamedElement>
+                    <interfaceMoniker
+                      Id="f766bbe1-4157-4d1b-9711-fceff412d602"
+                      LastKnownName="ITransientErrorDetectionStrategy"
+                      LastKnownLocation="Package5_1236.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="266e3e95-dc27-4377-a2ab-eb630462c2ec"
+            name="DefaultMongoErrorHandlingFactory"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="9af238a5-ebcb-4c7a-a6f1-152cfa58dcbb"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Fbin%2FDebug%2FMongo.Framework.dll Namespace%3DMongo.Framework.TransientFault Type%3DDefaultMongoErrorHandlingFactory Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c006f867-ca3e-42ac-a3eb-4a33266591ee"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2d297a61-a19c-4304-befe-5deff9434ea2">
+                    <propertyInstance
+                      Id="1647fe0b-f118-4107-bd72-571a7c1b8b83"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1f3dce6a-8cbe-44fe-a5ee-73f77a31cbbd">
+                    <propertyInstance
+                      Id="8876b961-4639-4ec4-b9b4-b0f5e9402f21"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="da9ba607-ebc1-41c1-a7a5-e01bd12c8d2e">
+                    <propertyInstance
+                      Id="f8055af2-d8af-4a20-b477-2abac2f98707"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="251fb167-42ed-4f02-804a-1793d713eb7b">
+                    <propertyInstance
+                      Id="ba75df45-d579-4ca8-a556-b755f2b9b119"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8008fbfe-ed71-4b5e-9da0-0a112f535d58">
+                    <propertyInstance
+                      Id="6b6ddd13-a4be-422c-8ac6-f1e293a22899"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3e072a94-090d-48e3-b56a-141df1c37176">
+                    <propertyInstance
+                      Id="4ed67ebb-910a-4576-87c4-7b28cad45f07"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

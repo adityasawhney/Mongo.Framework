@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="6a0bbb37-00e7-449c-bb61-776e28ddead4"
+  name="MongoDB"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="d0d19533-d4ac-4cba-82ee-69c6bec538a4"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DMongoDB"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="e70a3350-9ff9-45a4-9dfb-1f1270549423"
+        LastKnownName="Driver"
+        LastKnownLocation="Package1_1237.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="ab73312b-8ca8-4414-b351-0c0db799577d"
+        LastKnownName="Bson"
+        LastKnownLocation="Package2_1237.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

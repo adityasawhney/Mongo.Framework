@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="d699a8c7-a698-4188-a5df-e7cc8fdfc1bb"
+  name="TransientFaultHandling"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="54a97301-9a29-42ad-805a-6393826f9909"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DMicrosoft.Practices.TransientFaultHandling"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="15f2fe9c-f394-47a9-9e64-e707e4d5042c"
+        name="RetryPolicy"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="74eaa9bc-2668-44d8-881f-ca1967032d9a"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Flib%2FEntLibPackForAzure-5.0%2FMicrosoft.Practices.TransientFaultHandling.Core.dll Namespace%3DMicrosoft.Practices.TransientFaultHandling Type%3DRetryPolicy"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="7d4e353d-7933-4920-89a4-aeac5e237f8f"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="74d1cdea-b371-4a27-8949-b27650510d8a">
+                <propertyInstance
+                  Id="2e7fa9ea-c169-4fa8-ad10-25cfbd89764e"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7baabd6f-0657-49d3-89a6-6170f340e39d">
+                <propertyInstance
+                  Id="1af9513e-0caa-4547-a2be-2a14ff566c2b"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7d6758b0-ee23-4a4f-838e-57868fc3a664">
+                <propertyInstance
+                  Id="cd9f474c-59cc-4402-a72d-2992dcfcd5c1"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="38d03f90-42fc-4431-bf3f-9d30736813aa">
+                <propertyInstance
+                  Id="d30957e6-c928-4d60-9ff3-53d0aeaf3046"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="557c17b7-ca52-4cab-806f-92d88079ac91">
+                <propertyInstance
+                  Id="a74037d8-79d7-46c0-9c2c-1e9c5ac94629"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="d732fe6d-8490-464b-bce5-0f18957ec68a"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="f766bbe1-4157-4d1b-9711-fceff412d602"
+              LastKnownName="ITransientErrorDetectionStrategy"
+              LastKnownLocation="Package5_1236.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="df563c99-a8b5-42c2-a83e-df398300e2f5"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b75a4757-f4cb-4547-9364-5fa64674c64a"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="f766bbe1-4157-4d1b-9711-fceff412d602"
+        name="ITransientErrorDetectionStrategy"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="e73ef088-1a85-4602-b56a-2070de9f4158"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3Dfile:%2F%2F%2FD:%2Fgithub%2FMongo.Framework%2FMongo.Framework%2Flib%2FEntLibPackForAzure-5.0%2FMicrosoft.Practices.TransientFaultHandling.Core.dll Namespace%3DMicrosoft.Practices.TransientFaultHandling Type%3DITransientErrorDetectionStrategy"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="4bfd3025-57c3-43cf-b40d-56e5df05b17d"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ef96fe62-71cc-4f90-85d8-b3da1a0d3de5">
+                <propertyInstance
+                  Id="a2ae5666-56f3-4b88-aa57-966910746ff6"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c2442b11-7b70-470d-b011-682a75184abc">
+                <propertyInstance
+                  Id="a7f46b7b-f070-4553-ab54-16fa90a37bfd"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7702f3f4-42da-41c6-90f0-1a499c4ce6b8">
+                <propertyInstance
+                  Id="6ab799b3-22ca-4e99-8ca6-9f0287e24b15"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5c8adf62-7586-4372-abc3-4628d055761c">
+                <propertyInstance
+                  Id="f4d5d146-1237-4f2d-a140-54da9a0bbdc3"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
